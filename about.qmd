@@ -1,0 +1,6 @@
+---
+title: "About"
+---
+
+This web site and the weather station are managed and maintained by [Pedro J. Aphalo](mailto:pedro.aphalo@helsinki.fi), at the University of Helsinki, Finland.
+

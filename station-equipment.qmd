@@ -1,0 +1,131 @@
+---
+title: "Equipment used and site description"
+subtitle: "Current and previous deployments"
+author: "Pedro J. Aphalo (SenPEP)"
+date: "`r Sys.Date()`"
+abstract: |
+  This page describes the instrumens and sensors deployed at the weather station at the Viikki campus of the University of Helsinki, at Helsinki, Finland.
+keywords: [datalogger,sensors]
+categories: [Methods]
+editor: 
+  markdown: 
+    wrap: 72
+code-fold: true
+format:
+  html: 
+    code-link: true
+    code-tools: true
+draft: false
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(tidy = FALSE, cache = FALSE, echo = FALSE)
+```
+
+```{r, message=FALSE}
+library(tidyverse)
+library(ggridges)
+library(lubridate)
+```
+
+# What makes this station different?
+
+-   Time interval for acquisition of measurements: 5 s.
+-   Time interval for logging acquired data: 5 s (since 2024/04 for radiation).
+-   Time interval for logging of summaries: 1 min, 1 h, 1 d.
+-   Solar radiation measurement: currently seven types of sensors.
+-   Soil measurements as a depth profile.
+-   For research at the experimental field of the Viikki campus it provides on-site data.
+
+# Location
+
+The weather station is located in a reasearch field within the Viikki campus of
+the University of Helsinki, in Helsinki, Finland. Although the location is open
+enough, ensuring minimal disturbances to light measurements, some of the
+nearby buildings can be expected to affect wind measurements. A view of the
+weather station is shown in @fig-photo-birds-view.
+
+![The station in the field. The trees located about 100 m North of the tower were cut at the end of the Summer of 2020.](images/field-view-2020.jpg){#fig-photo-birds-view}
+
+# Logger and sensors
+
+A Campbell Scientific CR6 datalogger with a CDM-A116 analogue imput module is used. The datalogger has both digital and analogue inputs. The anologue to digital conversion (ADC) is done with 24 bits resolution and autoranging available. Data is acquired from most sensors once every 5 s and summaries computed and saved at 1 min-, 1 h-, and 1 d intervals. Soil sensors are read less frequently, and summaries saved at 1 h intervals. In the daily data, in addition to means, standard errors, maxima and minima for most variables, histograms for radiation data, computed in the logger, are also saved. In daily data, times for maxima and minima are also recorded. Each of the sets of summaries, 1 min, 1 h and 1 d, are stored in different *tables* (storage space) in the logger's CRBASIC program and downloaded as separate text files. A fourth table is used to store radiation data at the rate they are acquired. Data are downloaded on site through a USB connection to a laptop computer.
+
+![The station in February 2017, before the cross-arm was repositioned. The crossarm is oriented N-S with the N on the right side of the photograph.](images/tower-2017.jpg){#fig-photo-winter-2017}
+
+![View of the station after the sensors were repositioned in May 2020. The long cross-arm was moved higher up and a second, lower cross-arm oriented E-W was added for the weather transmitter. Potograph from June 2020](images/tower-2020.jpg){#fig-photo-summer-2020}
+
+![Winter-time view of the station after the infrared temperature sensors were installed in November 2020 on a third cross-arm.](images/tower-2020-11.jpg){#fig-photo-winter-2020}
+
+Radiation sensors are at $> 2\,$m above the ground surface, on a cross arm on the South of the tower, except for the sglux ones that are on the North side at the opposite end of the same cross arm. The weather sensor is at $1.9\,$m above the ground, at the East end of an East-West cross arm $0.75\,$m away from the mast. The sensors were relocated in the Spring of 2020, moving the radiation sensors higher up and the weather sensor from the North to the East side of the mast. The station is powered by a battery that is charged by a mains power supply and a solar panel in parallel, ensuring uninterrupted power year-round in spite of the high frequency of measurements, and the heating of some of the sensors during winter time. The table below lists the sensors, acquisition and logging frequencies, commissioning and decommissioning dates.
+
+| Sensor type      | make        | variable                  | qty. | signal | since-to    | time step | logging |
+|:-----------------|:------------|:--------------------------|:-----|:-------|:--------------|:----------|:--------|
+| UV-Cosine (UVB)  | sglux       | UVB irradiance            | 1    | 0-5V   | 2020/05       | 5 s       | rt, min, h |
+| UV-Cosine (UVA)  | sglux       | UVA irradiance            | 1    | 0-5V   | 2020/05       | 5 s       | rt, min, h |
+| UV-Cosine (blue) | sglux       | Blue-Violet irrad.        | 1    | 0-5V   | 2020/05       | 5 s       | rt, min, h |
+| SKR-110 R/FR     | Skye        | red irradiance            | 1    | mV     | 2017/06       | 5 s       | rt, min, h |
+| SKR-110 R/FR     | Skye        | far-red irradiance        | 1    | mV     | 2017/06       | 5 s       | rt, min, h |
+| LI-190 quantum   | LI-COR      | PAR (total PPFD)          | 1    | mV     | 2016/01-2022/06 | 5 s       | min, h |
+| CS310            | CampbellSci | PAR (total PPFD)          | 1    | mV     | 2021/06       | 5 s       | rt, min, h |
+| SMP3 pyramometer | Kipp        | global radiation          | 1    | 0-1V   | 2016/01       | 5 s       | min, h |
+| BF5              | Delta-T     | PAR (total PPFD)          | 1    | 0-2.5V | 2017/06       | 5 s       | rt, min, h |
+| BF5              | Delta-T     | PAR (diffuse PPFD)        | 1    | 0-2.5V | 2017/06       | 5 s       | rt, min, h |
+| WXT520           | Vaisala     | Air temperature           | 1    | SDI-12 | 2016/08-2021/06 | 5 s       | min, h |
+| WXT520           | Vaisala     | Air humidity              | 1    | SDI-12 | 2016/08-2021/06 | 5 s       | min, h |
+| WXT520           | Vaisala     | Wind speed                | 1    | SDI-12 | 2016/08-2021/06 | 5 s       | min, h |
+| WXT520           | Vaisala     | Wind direction            | 1    | SDI-12 | 2016/08-2021/06 | 5 s       | min, h |
+| WXT520           | Vaisala     | Atmospheric pressure      | 1    | SDI-12 | 2016/08-2021/06 | 5 s       | min, h |
+| WXT520           | Vaisala     | Precipitation, rain       | 1    | SDI-12 | 2016/08-2021/06 | 5 s       | min, h |
+| WXT520           | Vaisala     | Precipitation, hail       | 1    | SDI-12 | 2016/08-2021/06 | 5 s       | min, h |
+| WXT536           | Vaisala     | Air temperature           | 1    | SDI-12 | 2021/06       | 10 s      | min, h |
+| WXT536           | Vaisala     | Air humidity              | 1    | SDI-12 | 2021/06       | 10 s      | min, h |
+| WXT536           | Vaisala     | Wind speed                | 1    | SDI-12 | 2021/06       | 10 s      | min, h |
+| WXT536           | Vaisala     | Wind direction            | 1    | SDI-12 | 2021/06       | 10 s      | min, h |
+| WXT536           | Vaisala     | Atmospheric pressure      | 1    | SDI-12 | 2021/06       | 10 s      | min, h |
+| WXT536           | Vaisala     | Precipitation, rain       | 1    | SDI-12 | 2021/06       | 10 s      | min, h |
+| WXT536           | Vaisala     | Precipitation, hail       | 1    | SDI-12 | 2021/06       | 10 s      | min, h |
+| SoilVUE10        | CampbellSci | Soil moisture profile     | 3    | SDI-12 | 2020/05       | 12 min    | h      |
+| SoilVUE10        | CampbellSci | Soil temperature profile  | 3    | SDI-12 | 2020/05       | 12 min    | h      |
+| SoilVUE10        | CampbellSci | Soil elect. cond. profile | 3    | SDI-12 | 2020/05       | 12 min    | h      |
+| SoilVUE10        | CampbellSci | Soil permittivity profile | 3    | SDI-12 | 2020/05       | 12 min    | h      |
+| CS655            | CampbellSci | Soil moisture             | 3    | SDI-12 |               | 12 min    | h      |
+| CS655            | CampbellSci | Soil temperature          | 3    | SDI-12 |               | 12 min    | h      |
+| CS655            | CampbellSci | Soil elect. cond.         | 3    | SDI-12 |               | 12 min    | h      |
+| CS655            | CampbellSci | Soil permittivity         | 3    | SDI-12 |               | 12 min    | h      |
+| 107              | CampbellSci | Soil temperature profile  | 4    | ohms   | 2020/08       | 5 s       | min, h |
+| CSmicro LT02     | Optris      | Surface temperature       | 2    | 0-5V   | 2020/11       | 5 s       | min, h |
+
+: Sensors installed in the weather station and when they have been operative. Column, *signal* shows how the datalogger receives the information. Sensors with mV (millivolt) output lack built-in amplifier and provide a raw electrical signal. Sensors with V (Volt) output have a built-in analogue amplifier. Signal in ohms ($\Omega$) is the sensor's electrical resistance. SDI-12 is a digital serial communication protocol. In the case of analogue sensors, the digital conversion is done by the datalogger. For digital signals the conversion is done in the sensor. Most SDI-12 "sensors" like the WXT520 and WXT536 "weather transmitters" contain sensors for multiple variables. SDI-12 communication allows the data from difference sensors to be sent sequentially using the same wires and logger inputs. Column *since-to* gives the period when sensors have been operative. Column *time step* refers to data acquisition, while column *logging* refers to the time step for data storage, encoded as: *rt* = real time or same as data acquisition; *min* indicates logging of the summaries of acquired data once per minute and *h* once per hour. When data are logged once per minute, hourly averages are in some cases computed off-line in post processing from the 1-min averages. For radiation data, daily histograms were also logged until 2024-04-22. {#tbl-sensors}
+
+The response time constants differ among sensors. According to manufacturers' specifications the time constants of the radiation sensors currently in use are as follows. The sensors for UVB, UVA and blue have a time constant of $150\pm25$ ms. The _Campbell CS310/Apogee SQ-500-SS_ PAR sensor has a time constant $<1$ ms. The Kipp pyranometer has a time constant of $\approx12$ s. The Delta-T BF5 sensor has a time constant $< 250$ ms. The Skye R+FR sensor has a time constant of $\approx 10$ ns (?!). The WXT356 weather transmitter has different time constants for different variables for the values used to compute in-sensor summaries, while to fastest supported polling by the logger to retrieve data is once every $10$ s.
+
+![Hemispherical view from the sensor's position showing the field of view of the sensor. The North is at the top. Image taken in September 2017.](images/fisheye-photo-rot.jpg){#fig-photo-fisheye}
+
+As seen in the photograph above, the true horizon is not visible in all directions. A small grove of birch trees about 100 m to the North of the station were cut in year 2020 while a group of aspens some 300 m to the South were cut at the end of the summer of 2023. The birch trees may have affected the wind regime to some extent from start of measurements in 2015 until the Summer of 2020. In spite of the distance of several hundred meters to them, the tall buildings around the field are likely to disturb wind direction and speed differently in different parts of the field. The buildings occlude the solar disk for very low sun elevation angles but only for some azimuth angles. Anyway, nearly the whole sky is visible to the radiation sensors and the solar disk is occluded by obstacles only vary rarely, delaying "sunrise" and anticipating "sunset" by only a few minutes, causing a discontinuity in the daily course of irradiance, clearly visible at longer wavelengths. 
+
+![Weather transmitter, Vaisala WXT536](images/_Z142617.jpg "Weather transmitter, Vaisala WXT536"){#fig-photo-wtx}
+
+![PAR quantum sensor from LI-COR (left) pyranometer from Kipp (right)](images/_Z142607.jpg "PAR quantum sensor from LI-COR (left) pyranometer from Kipp (right)"){#fig-photo-sensors-LI-Kipp}
+
+![Diffuse/direct PAR sensor from Delta-T (left) red and far-red sensor from Skye Instruments (right)](images/_Z142611.jpg "Diffuse/direct PAR sensor from Delta-T (left) red and far-red sensor from Skye Instruments (right)"){#fig-photo-sensors-Delta-T-Skye}
+
+![Blue, UVA and UVB sensors from sglux (left) Campbell Scientitfic/Apogee PAR sensor (right)](images/_Z142612.jpg "Blue, UVA and UVB sensors from sglux (left) Campbell Scientitfic/Apogee PAR sensor (right)"){#fig-photo-sensors-sglux}
+
+![Non-contact surface temperature sensors from Optris](images/_Z142616.jpg "Non-contact surface temperature sensors from Optris"){#fig-photo-sensors-optris}
+
+# Equipment suppliers
+
+[Campbell Scientific](https://www.campbellsci.com/)
+
+[Delta-T Devices](https://www.delta-t.co.uk/)
+
+[Kipp & zonen](https://www.kippzonen.com/)
+
+[Optris](https://www.optris.de/)
+
+[sglux](https://sglux.de/)
+
+[Skye Instruments](https://www.skyeinstruments.com/)
+
+[Vaisala](https://www.vaisala.com/en)

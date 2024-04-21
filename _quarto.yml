@@ -1,0 +1,43 @@
+project:
+  type: website
+
+website:
+  title: "FBES/OEB/SenPEP Weather Station"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Methods
+        menu:
+          - href: station-equipment.qmd
+            text: Equipment
+          - href: station-data-description.qmd
+            text: Computations
+      - text: Data access
+        href: https://osf.io/e4vau/
+      - href: about.qmd
+        text: About
+  page-footer:
+    right:
+      - text: "&copy; 2015-2024 Pedro J. Aphalo"
+        href: about/about.qmd
+    center:
+      - text: "Viikki Campus Weather Station"
+    left:
+      - text: "P. J. Aphalo @ ORCID"
+        href: https://orcid.org/0000-0003-3385-972X
+
+number-sections: true
+number-depth: 2
+
+format:
+  html:
+    theme: spacelab
+    linkcolor: "#0000A0"
+    css: styles.css
+    highlight-style: github
+    date-format: iso
+    toc: true
+
+editor: source
+license: "CC BY-SA"

@@ -1,0 +1,45 @@
+---
+title: "Home"
+subtitle: "Viikki, Helsinki, Finland"
+author: "Pedro J. Aphalo (SenPEP, OEB @ University of Helsinki)"
+date: "`r Sys.Date()`"
+abstract: |
+  This site describes the weather station at the Viikki campus of the University of Helsinki, at Helsinki, Finland.
+keywords: [weather station,Viiki,Helsinki,Finland]
+categories: [Introduction]
+editor: 
+  markdown: 
+    wrap: 72
+code-fold: true
+format:
+  html: 
+    code-link: true
+    code-tools: true
+draft: false
+---
+
+## Presentation and history
+
+The station is relatively new. It was set up in 2015 to provide background environmental data for field experiments done in the research field at the Viikki campus of the University of Helsinki, Finland. 
+
+Because of budget restrictions and needs of different experiments, sensors have been added over the years to expand the range of measured variables. Initially the aim was to collect measurements only during the growing season or snow-free period. Currently part of the sensors work reliably year-round, but the solar radiation sensors still lack air blowers to clear the snow.
+
+The measured variables are the basic weather ones plus variables of specific interest in agro-meteorology and plant ecology, with particular emphasis on solar radiation and its spectral and temporal variation. For most variables data are acquired and logged at much higher frequencies than at standard meteorological stations or agro-meteorological stations. The array of radiation sensors is also much more comprehensive and covers most wavebands of interest for plant ecology and plant photobiology.
+
+At the core of the station is a high speed datalogger with analogue to digital converters (ADC) with 24 bit of precision and an input expansion module. These together with the use in part of sensors with built-in ADC attached using multiplexed serial digital communication (SDI-12 protocol) allows the acquisition of data for numerous variables in synchrony.
+
+![View of the weather station.](images/tower-2020-11.jpg){#fig-photo-weather-station}
+
+## Location
+
+The weather station is located in Viikki, Helsinki, Finland. It is in the research field at the Viikki campus of the [University of Helsinki](https://www.helsinki.fi/fi/tutustu-meihin/tama-helsingin-yliopisto/kampukset/viikin-kampus) at coordinates 60.2268 N, 25.0192 E. 
+
+
+## Future plans
+
+At the very least we hope to maintain the station measuring the same variables as currently in the future. Regrettably, the station needs to be relocated by some hundred meters in the near future, thus creating a discontinuity in the time series of data.
+
+Plans are in place to add broad band light sensors for additional wavelengths, UV-A1 and Green light sensors are being custom developed in collaboration by sglux in Germany. We intend to increase the measuring and logging frequency for light measurements.
+
+In the longer term, we intend acquire custom broadband sensors with input optics with special geometries. The idea is that these sensors will measure the radiation received on a vertical cylinder and on a dome surface, thus complementing the usual cosine-corrected ones used to measure irradiance on a horizontal plane. Many plant surfaces as well as parts of the human body are exposed as vertical surfaces or other other angles from the horizontal, so knowing the UV and visible radiation they receive is important.
+
