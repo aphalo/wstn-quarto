@@ -1,0 +1,154 @@
+---
+title: "Data users"
+subtitle: "Projects, theses and publications"
+author: "Pedro J. Aphalo"
+date: 2024-04-24
+date-modified: 2024-04-24
+abstract: |
+  This page describes who has used the data available from the weather station at the Viikki campus of the University of Helsinki, at Helsinki, Finland. It also lists doctoral theses and publications.
+keywords: [datalogger,data processing,published data]
+categories: [Methods]
+editor: 
+  markdown: 
+    wrap: 72
+format:
+  html: 
+    code-fold: true
+    code-link: true
+    code-tools: true
+draft: false
+---
+
+# Introduction
+
+This page lists those publications and users known to me. As the data set is published on-line with unrestricted access, there maybe additional works and users of whom I am unaware. **At the moment the list of publications and works in course are incomplete and some information still preliminary.**
+
+# Publications
+
+The data from this weather station have been used in the following publications.
+
+Yan, Y., Stoddard, F. L., Neugart, S., Sadras, V. O., Lindfors, A., Morales, L. O. and Aphalo, P. J. (2019), 'Responses of flavonoid profile and associated gene expression to solar blue and UV radiation in two accessions of Vicia faba L. from contrasting UV environments', Photochemical & Photobiological Sciences 18(2), 434--447.
+
+Yan, Y., Stoddard, F. L., Neugart, S., Oravec, M., Urban, O., Sadras, V. O. and Aphalo, P. J. (2020), 'The transgenerational effects of solar short-UV radiation differed in two accessions of Vicia faba L. from contrasting UV environments', Journal of Plant Physiology 248, 153145.
+
+Pieristé, M., Neimane, S., Solanki, T., Nybakken, L., Jones, A. G., Forey, E., Chauvat, M., Necajeva, J. and Robson, T. M. (2020), 'Ultraviolet radiation accelerates photodegradation under controlled conditions but slows the decomposition of senescent leaves from forest stands in southern Finland', Plant Physiology and Biochemistry 146, 42--54.
+
+Wang, F., Israel, D., Ramírez-Valiente, J.-A., Sánchez-Gómez, D., Aranda, I., Aphalo, P. J. and Robson, T. M. (2020), 'Seedlings from marginal and core populations of European beech (Fagus sylvatica L.) respond differently to imposed drought and shade', Trees 35(1), 53--67.
+
+Rai, N., Morales, L. O. and Aphalo, P. J. (2021), 'Perception of solar UV radiation by plants: photoreceptors and mechanisms', Plant Physiology 186(3), 1382--1396.
+
+Aphalo, P. J. and Sadras, V. O. (2021), 'Anticipatory responses to drought by plants: What are the environmental cues?', EcoEvoRxiv.
+
+Durand M, Matule B, Burgess AJ, Robson TM. 2021. Sunfleck properties from time series of fluctuating light. Agricultural and Forest Meteorology: 308-309.DOI: 10.1016/j.agrformet.2021.108554
+
+Aphalo, P. J. and Sadras, V. O. (2022), 'Explaining preemptive acclimation by linking information to plant phenotype', Journal of Experimental Botany 73(15), 5213--5234.
+
+Rai, N., Neugart, S., Schröter, D., Lindfors, A. V. and Aphalo, P. J. (2023), 'Responses of flavonoids to solar UV radiation and gradual soil drying in two Medicago truncatula accessions', Photochemical &amp; Photobiological Sciences 22(7), 1637--1654.
+
+Aphalo, P. J. (2021-2024), 'High frequency weather data for Viikki, Helsinki, Finland', Center for Open Science, OSF, Charlottesville.
+
+# Manuscripts and work in progress
+
+Soroush Moradi Zavie Korda, Juuso Tuure, Matti Räsänen, Szabolcs Galambosia, Laura Alakukku (submitted 2024) _Geometry and surface manipulation impact on passive dew and rain collection_ AGRI, FOR, OEB.
+
+Romina Sellaro, Maxime Durand, Pedro J. Aphalo, and Jorge J. Casal (review submitted to JXB 2024) Making the most of canopy light: Shade avoidance under a fluctuating spectrum and irradiance. OEB.
+
+Santa Neimane et al. (in preparation) Barley under future skies: field experimental trial demonstrates that plant response to diffuse light is mediated by UV. OEB.
+
+Santa Neimane et al. (in preparation) Faba bean under future skies: field experimental trial demonstrates that plant response to diffuse light is mediated by UV. OEB.
+
+Aphalo, P. J. and Sadras, V. O. (manuscript), 'Anticipatory responses to drought by plants: What are the environmental cues?'. OEB.
+
+Pedro J. Aphalo (manuscript) Low vs. High UV Irradiance in Sunlight: An answer from millions of observations at Helsinki. OEB.
+
+Pedro J. Aphalo (manuscript) How much temporal variation there is in blue, red and far-red sun light: An answer from millions of observations at Helsinki. OEB.
+
+Pedro J. Aphalo, Marcel Jansen, and Wolfgang Bilger (eds of book) Field Methods in Plant Photobiology: From Principles to Practice. OEB.
+
+Su-Zhou Chenxing, et al. OEB (1-2 papers)
+
+Marieke Trasser, OEB (1 paper)
+
+Xin Zhuang, FOR/INAR (x papers)
+
+# PhD theses defended
+
+Pieristé, Marta (2020) Light after death : the importance of spectral composition in litter decomposition processes.
+
+Yan, Yan (2021) Long-term exposure to solar blue and UV radiation in legumes : pre-acclimation to drought and accession-dependent responses in two successive generations. DPPS. OEB.
+
+Rai, Neha (2020) Perception of solar UV radiation and blue light by plants : photoreceptors, transcriptome and environmental acclimation. DPPS. OEB.
+
+Wang, Fang () 
+
+# PhD theses in progress
+
+Santa Neimane. Are canopy light use and carbon capture increased in a climate of cloudy skies and increased atmospheric aerosols?
+
+Xin Zhuang, FOR/INAR
+
+Alessandro Zanetti, 
+
+Su-Zhou Chenxing, PhD at Chinese University
+
+# Principal Investigators and researchers
+
+I list here people who have used the data or asked for access to it.
+
+Pedro J. Aphalo, OEB.
+
+T. Matthew Robson, OEB;
+Suzhou
+
+Maxime Durand, OEB.
+
+Alexey Shapigisov, OEB
+
+Juha Mikkola, OEB (formerly).
+
+Mari Pihlätie, AGRI
+
+Tanja Pyhäjärvi, FOR
+
+Jussi Heinosalo, Microbiology
+
+Pauliina Turunen, AGRI
+
+Sanna Ehonen, OEB.
+
+Teemu Höltä, FOR
+
+Albert Porcar, FOR
+
+Yann Salmon, INAR/FOR
+
+Fred Stoddard, AGRI
+
+Priit Tammeorg, AGRI;
+Zannatul Ferdousm, AGRI
+
+Kristiina Mäkinen, AGRI
+
+Anna Lintunen, FOR; Alessandro Zanetti
+
+Gerin Stephanie, FMI
+
+Kristiina Himanen, NaPPI
+
+Daniel Richterich, NaPPI, Greenhouse
+
+# Research Groups/organizations
+
+SenPEP (P. Aphalo)
+
+CanSEE (M. Robson)
+
+Maxime Durand postdoc project (Fluttering Fields & Wuthering Winds: Canopy Photosynthesis Under High Frequency Sunflecks) 
+
+TreeBio CoE (Centre of Excellence in Tree Biology, Helariutta, Y., Kangasjärvi, J., Mähönen, A. P., Hölttä, T., Pyhäjärvi, T. S., Salojärvi, J., Nieminen, K., Shapiguzov, A., Kucukoglu Topcu, M., Sierla, M., Waszczak, C. & Vaten, A.)
+
+NaPPI (K. Himanen)
+
+SMEAR-Agri (M. Pihlätie)
+
+TWINWIN-field (Jussi Heinonsalo)

@@ -10,16 +10,16 @@ categories: [Methods]
 editor: 
   markdown: 
     wrap: 72
-code-fold: true
 format:
   html: 
+    code-fold: true
     code-link: true
     code-tools: true
 draft: false
 ---
 
 ```{r setup, echo=FALSE}
-knitr::opts_chunk$set(tidy = FALSE, cache = FALSE, echo = FALSE)
+knitr::opts_chunk$set(tidy = FALSE, cache = FALSE)
 ```
 
 ```{r, message=FALSE}
@@ -31,53 +31,74 @@ library(lubridate)
 
 # What makes data from this weather station different?
 
--   Time interval for acquisition of measurements (2015 to 2024-04-15): 5 s.
--   Time interval for acquisition of measurements (2024-04-15 to present): 1 s.
--   Time interval for logging of summaries (2015 to 2024-04-15): 1 min, 1 h, 1 d.
--   Time interval for logging of summaries (2024-04-15 to present): 1 s, 1 min, 1 h.
--   Solar radiation measurement: currently seven types of broadband sensors.
+-   Time interval for acquisition of measurements (2015 to 2024-04-15):
+    5 s.
+
+-   Time interval for acquisition of measurements (2024-04-15 to
+    present): 1 s.
+
+-   Time interval for logging of summaries (2015 to 2024-04-15): 1 min,
+    1 h, 1 d.
+
+-   Time interval for logging of summaries (2024-04-15 to present): 1 s,
+    1 min, 1 h.
+
+-   Solar radiation measurement: currently seven types of broadband
+    sensors.
+
 -   Soil measurements as a depth profile.
 
--   Data provided as a free service for research at the experimental field of the Viikki campus.
--   Data for state-of-the-art research on the spectrum of sunlight and its fast variation.
+-   Data provided as a free service for research at the experimental
+    field of the Viikki campus.
+
+-   Data for state-of-the-art research on the spectrum of sunlight and
+    its fast variation.
+
 -   Open access to these data, deposited under a citable DOI.
 
 # Data availability
 
-[Open access through Open Science Foundation](https://osf.io/e4vau/) under [DOI 10.17605/OSF.IO/E4VAU](https:doi.org/10.17605/OSF.IO/E4VAU).
+[Open access through Open Science Foundation](https://osf.io/e4vau/)
+under [DOI 10.17605/OSF.IO/E4VAU](https:doi.org/10.17605/OSF.IO/E4VAU).
 
-To be cited, after adding date when the site was visited to download the data, as:
+To be cited, after adding date when the site was visited to download the
+data, as:
 
-Aphalo, Pedro J. 2024. _High Frequency Weather Data for Viikki, Helsinki, Finland._ OSF (Open Science Foundation). doi:10.17605/OSF.IO/E4VAU.
+Aphalo, Pedro J. 2024. _High Frequency Weather Data for Viikki,
+Helsinki, Finland._ OSF. doi:10.17605/OSF.IO/E4VAU.
 
 # Limitations of the data
 
-Radiation data in winter months is very unreliable as the sensors lack a blower
-to keep the snow away. Some of the radiation sensors have heating but this does
-not help much with sticky snow. Precipitation as snow or sleet is not detected
-by the weather sensor, and also wind measurements can be potentially affected by
-snow and ice accumulation. Other variables can be trusted year-round. The
-intention of this station was initially to _take readings during the growing
-season_. The data in the files include winter values for all variables,
-including those which are expected not reliable on many days between mid
-November and late March, and a few days in April.
+Radiation data in winter months is very unreliable as the sensors lack a
+blower to keep the snow away. Some of the radiation sensors have heating
+but this does not help much with sticky snow. Precipitation as snow or
+sleet is not detected by the weather sensor, and also wind measurements
+can be potentially affected by snow and ice accumulation. Other
+variables can be trusted year-round. The intention of this station was
+initially to *take readings during the growing season*. The data in the
+files include winter values for all variables, including those which are
+expected not reliable on many days between mid November and late March,
+and a few days in April.
 
 # The data flow
 
-The acquisition and summarizing of data requires multiples steps, some performed
-on board the datalogger and some in a personal computer [@fig-data-flow-chart].
-The program in the logger is written in CRBasic, data are downloaded through a
-USB connection to a laptop computer in the field, using the program
-[PC400](https://www.campbellsci.com/pc400). Later computations are done with R
-scripts that make use of packages from the [R for Photobiology
-Suite](https://www.r4photobiology.info/pages/r4p-introduction.html) (Aphalo2025)
+The acquisition and summarizing of data requires multiples steps, some
+performed on board the datalogger and some in a personal computer
+[@fig-data-flow-chart]. The program in the logger is written in CRBasic,
+data are downloaded through a USB connection to a laptop computer in the
+field, using the program [PC400](https://www.campbellsci.com/pc400).
+Later computations are done with R scripts that make use of packages
+from the [R for Photobiology
+Suite](https://www.r4photobiology.info/pages/r4p-introduction.html)
+(Aphalo2025)
 
-Even if the program code used at some of these steps has been edited over the
-years, the steps have remained the same. The raw data files as downloaded from
-the logger are all stored indefinitely. This has made it possible to redo all
-data processing starting from step "import" when the R scripts have been edited
-to add new derived quantities, update calibrations, or fix errors. This is
-needed to ensure consistency through the whole time series of data.
+Even if the program code used at some of these steps has been edited
+over the years, the steps have remained the same. The raw data files as
+downloaded from the logger are all stored indefinitely. This has made it
+possible to redo all data processing starting from step "import" when
+the R scripts have been edited to add new derived quantities, update
+calibrations, or fix errors. This is needed to ensure consistency
+through the whole time series of data.
 
 ```{mermaid}
 %%| label: fig-data-flow-chart
@@ -97,71 +118,86 @@ flowchart TD
 ```
 
 ::: callout-note
-Over the eight years during which the station has been operational, there have
-been changes in the installed sensors (described under 
-[Equipment used and site description](station.equipment.qmd)), and in the
-program run in the datalogger to acquire the data. Most of the changes
-to the program were related to the installation of new sensors. However, a
-few changes affected the data acquisition frequency as described in this 
-callout.
+Over the eight years during which the station has been operational,
+there have been changes in the installed sensors (described under
+[Equipment used and site description](station.equipment.qmd)), and in
+the program run in the datalogger to acquire the data. Most of the
+changes to the program were related to the installation of new sensors.
+However, a few changes affected the data acquisition frequency as
+described in this callout.
 
-Some variables earlier logged on a daily or hourly basis are no
-longer logged as they are now computed from higher frequency data during data
-processing after download from the logger. This change does not affect the
-continuity of the published time series data, as the two approaches are
-numerically equivalent.
+Some variables earlier logged on a daily or hourly basis are no longer
+logged as they are now computed from higher frequency data during data
+processing after download from the logger. This change does not affect
+the continuity of the published time series data, as the two approaches
+are numerically equivalent.
 
-The change in data acquisition frequency from once every 5 s to once every 1 s
-on 2024-04-15, could in principle decrease the variability of the 1 min
-summaries. However, the averaging period used for data acquisition was decreased
-at the same time as the frequency was increased. Means in the 1 min and 1 h time
-series are, thus, unlikely to be affected significantly. Minima and maxima, and
-standard deviations could, potentially be slightly affected.
+The change in data acquisition frequency from once every 5 s to once
+every 1 s on 2024-04-15, could in principle decrease the variability of
+the 1 min summaries. However, the averaging period used for data
+acquisition was decreased at the same time as the frequency was
+increased. Means in the 1 min and 1 h time series are, thus, unlikely to
+be affected significantly. Minima and maxima, and standard deviations
+could, potentially be slightly affected.
 
-Similarly, until 2023-xx-xx, the data from soil sensors was acquired once per 1
-h and these values were directly logged. Since 2023-XX-XX, they are acquired
-once every 12 min, and 1 h means of 5 values logged. The values returned by the
-Vaisala WXT520 weather transmitter were acquired once every 5 s, but the polling
-frequency had to be decreased to once every 10 s for the WXT536. However, as the
-averaging period in the WXT536 for means computed on board the sensor was also
-increased, 1 min and 1 h averages should not be affected by this change. Minima
-and maxima, and standard deviations could, potentially be slightly affected.
+Similarly, until 2023-xx-xx, the data from soil sensors was acquired
+once per 1 h and these values were directly logged. Since 2023-XX-XX,
+they are acquired once every 12 min, and 1 h means of 5 values logged.
+The values returned by the Vaisala WXT520 weather transmitter were
+acquired once every 5 s, but the polling frequency had to be decreased
+to once every 10 s for the WXT536. However, as the averaging period in
+the WXT536 for means computed on board the sensor was also increased, 1
+min and 1 h averages should not be affected by this change. Minima and
+maxima, and standard deviations could, potentially be slightly affected.
 :::
 
 # Logged acquired and summary values
 
-In this section I list the variables that are stored in the
-logger's memory at different time intervals, plus the time and date-related
-variables that are computed and adjusted to UTC when the data are imported into
-R. The tables describe the variables as acquired and logged starting on
-2024-04-15. 
+In this section I list the variables that are stored in the logger's
+memory at different time intervals, plus the time and date-related
+variables that are computed and adjusted to UTC when the data are
+imported into R. The tables describe the variables as acquired and
+logged starting on 2024-04-15.
 
 ## Quantities logged once per second
 
-Logging of data once per 1 s tarted on 2024-04-15, thus the data listed in
-@tbl-logged-second are not available before this date at
-this frequency. They are nonetheless available as 1 min averages computed from
-data acquired once every 5 s.
+Logging of data once per 1 s tarted on 2024-04-15, thus the data listed
+in @tbl-logged-second are not available before this date at this
+frequency. They are nonetheless available as 1 min averages computed
+from data acquired once every 5 s.
 
-| Quantity              | Summary           | Units     |
-|:----------------------|:------------------|:----------|
-| "TIMESTAMP"           | sample            |           |
-| "PAR_Den_Avg"         | sample            | µmol/s/m² |
-| "PAR_BF_tot_Avg"      | sample            | µmol/s/m² |
-| "PAR_BF_diff_Avg"     | sample            | µmol/s/m² |
-| "Red_Den_cal_Avg"     | sample            | µmol/s/m² |
-| "Far_red_Den_cal_Avg" | sample            | µmol/s/m² |
-| "RFR_rat_Avg"         | sample            | mol / mol |
-| "Blue_Den_Avg"        | sample            | µmol/s/m² |
-| "UVA_Den_Avg"         | sample            | µmol/s/m² |
-| "UVB_Den_Avg"         | sample            | µmol/s/m² |
+| Quantity              | Summary | Units     |
+|:----------------------|:--------|:----------|
+| "TIMESTAMP"           | sample  |           |
+| "PAR_Den_Avg"         | sample  | µmol/s/m² |
+| "PAR_BF_tot_Avg"      | sample  | µmol/s/m² |
+| "PAR_BF_diff_Avg"     | sample  | µmol/s/m² |
+| "Red_Den_cal_Avg"     | sample  | µmol/s/m² |
+| "Far_red_Den_cal_Avg" | sample  | µmol/s/m² |
+| "RFR_rat_Avg"         | sample  | mol / mol |
+| "Blue_Den_Avg"        | sample  | µmol/s/m² |
+| "UVA_Den_Avg"         | sample  | µmol/s/m² |
+| "UVB_Den_Avg"         | sample  | µmol/s/m² |
 
-Table: Data logged as acquired before computation of derived quantities. Column 'summary' shows how the data are summarised by the datalogger before being stored, _sample_ indicating that the most recently acquired value is stored. The units are those obtained after off-line application of calibration factors.  {#tbl-logged-second}
+: Data logged as acquired before computation of derived quantities.
+Column 'summary' shows how the data are summarised by the datalogger
+before being stored, *sample* indicating that the most recently acquired
+value is stored. The units are those obtained after off-line application
+of calibration factors. {#tbl-logged-second}
 
 ## Quantities logged once per minute
 
-The values currently logged are listed in
-@tbl-logged-minute. The quantities logged once per minute are means of multiple data values acquired by the data logger from the sensors. Until 2024-04-15 the data acquired values acquired once every 5 s, from which the summaries listed in @tbl-logged-minute are derived were not logged. Starting from 2024-04-15, data are being acquired more frequently, once every 1 s, and thus the number of values used to compute 1 min means and other summaries has increased from 12 to 60. In the case of the weather variables acquired with the WXT weather transmitters, the data acquired by the logger are summaries computed on-board of these "intelligent sensors".
+The values currently logged are listed in @tbl-logged-minute. The
+quantities logged once per minute are means of multiple data values
+acquired by the data logger from the sensors. Until 2024-04-15 the data
+acquired values acquired once every 5 s, from which the summaries listed
+in @tbl-logged-minute are derived were not logged. Starting from
+2024-04-15, data are being acquired more frequently, once every 1 s, and
+thus the number of values used to compute 1 min means and other
+summaries has increased from 12 to 60. In the case of the weather
+variables acquired with the WXT weather transmitters, the data acquired
+by the logger are summaries computed on-board of these "intelligent
+sensors".
 
 | Quantity              | Summary              | Units     |
 |:----------------------|:---------------------|:----------|
@@ -174,17 +210,17 @@ The values currently logged are listed in
 | "PAR_BF_diff_Avg"     | mean of 12/60 values | µmol/s/m² |
 | "Solar_irrad_Avg"     | mean of 12/60 values | W/m²      |
 | "PTemp_C"             | mean of 12/60 values | C         |
-| "WindSpd_S\_WVT"      | mean of 6 values  | m/s       |
-| "WindDir_D1_WVT"      | mean of 6 values  | Deg       |
-| "WindDir_SD1_WVT"     | mean of 6 values  | Deg       |
-| "AirTemp_Avg"         | mean of 6 values  | C         |
-| "AirTemp_Min"         | min of 6 values   | C         |
-| "AirTemp_Max"         | max of 6 values   | C         |
-| "RelHumidity"         | mean of 6 values  | \%        |
-| "AirDewPoint"         | mean of 6 values  | C         |
-| "AirPressure"         | mean of 6 values  | hPa       |
-| "Ramount_Tot"         | sum               | mm        |
-| "Hamount_Tot"         | sum               | hits/cm2  |
+| "WindSpd_S_WVT"       | mean of 6 values     | m/s       |
+| "WindDir_D1_WVT"      | mean of 6 values     | Deg       |
+| "WindDir_SD1_WVT"     | mean of 6 values     | Deg       |
+| "AirTemp_Avg"         | mean of 6 values     | C         |
+| "AirTemp_Min"         | min of 6 values      | C         |
+| "AirTemp_Max"         | max of 6 values      | C         |
+| "RelHumidity"         | mean of 6 values     | \%        |
+| "AirDewPoint"         | mean of 6 values     | C         |
+| "AirPressure"         | mean of 6 values     | hPa       |
+| "Ramount_Tot"         | sum                  | mm        |
+| "Hamount_Tot"         | sum                  | hits/cm2  |
 | "Red_Den_cal_Avg"     | mean of 12/60 values | µmol/s/m² |
 | "Far_red_Den_cal_Avg" | mean of 12/60 values | µmol/s/m² |
 | "RFR_rat_Avg"         | mean of 12/60 values | mol / mol |
@@ -193,252 +229,295 @@ The values currently logged are listed in
 | "UVB_Den_Avg"         | mean of 12/60 values | µmol/s/m² |
 | "SurfTemp_grnd_Avg"   | mean of 12/60 values | C         |
 | "SurfTemp_veg_Avg"    | mean of 12/60 values | C         |
-| "T107_C\_Avg(1-4)"    | mean of 12/60 values | C         |
+| "T107_C_Avg(1-4)"     | mean of 12/60 values | C         |
 
-Table: Data logged once per minute available before computation of derived quantities. Column 'summary' shows how the data are summarised by the datalogger before being stored. When the number of values is indicated as 12/60, 12 is for data acquired before 2024-04-15 and 60 for more recent data. The units are those obtained after off-line application of calibration factors. {#tbl-logged-minute}
+: Data logged once per minute available before computation of derived
+quantities. Column 'summary' shows how the data are summarised by the
+datalogger before being stored. When the number of values is indicated
+as 12/60, 12 is for data acquired before 2024-04-15 and 60 for more
+recent data. The units are those obtained after off-line application of
+calibration factors. {#tbl-logged-minute}
 
 ## Quantities logged once per hour
 
-The values currently logged are listed in
-@tbl-logged-hour, respectively. These values are directly
-computed from the acquired data, not from 1 min means.
+The values currently logged are listed in @tbl-logged-hour,
+respectively. These values are directly computed from the acquired data,
+not from 1 min means.
 
-| Quantity              | Summary                               | Units               |
-|:----------------------|:--------------------------------------|:--------------------|
-| "TIMESTAMP"           | sample                                |                     |
-| "PAR_Den_Avg"         | mean of 720/3600 values               | µmol/s/m²           |
-| "PAR_Den_Std"         | standard deviation of 720/3600 values | µmol/s/m²           |
-| "PAR_Den_Min"         | min of 720/3600 values                | µmol/s/m²           |
-| "PAR_Den_Max"         | max of 720/3600 values                | µmol/s/m²           |
-| "PAR_Den_CS_Avg"      | mean of 720/3600 values               | µmol/s/m²           |
-| "PAR_Den_CS_Std"      | standard deviation of 720/3600 values | µmol/s/m²           |
-| "PAR_Den_CS_Min"      | min of 720/3600 values                | µmol/s/m²           |
-| "PAR_Den_CS_Max"      | max of 720/3600 values                | µmol/s/m²           |
-| "PAR_BF_tot_Avg"      | mean of 720/3600 values               | µmol/s/m²           |
-| "PAR_BF_tot_Std"      | standard deviation of 720/3600 values | µmol/s/m²           |
-| "PAR_BF_tot_Min"      | min of 720/3600 values                | µmol/s/m²           |
-| "PAR_BF_tot_Max"      | max of 720/3600 values                | µmol/s/m²           |
-| "PAR_BF_diff_Avg"     | mean of 720/3600 values               | µmol/s/m²           |
-| "PAR_BF_diff_Std"     | standard deviation of 720/3600 values | µmol/s/m²           |
-| "PAR_BF_diff_Min"     | min of 720/3600 values                | µmol/s/m²           |
-| "PAR_BF_diff_Max"     | max of 720/3600 values                | µmol/s/m²           |
-| "Solar_irrad_Avg"     | mean of 720/3600 values               | W/m²                |
-| "Solar_irrad_Std"     | standard deviation of 720/3600 values | W/m²                |
-| "Solar_irrad_Min"     | min of 720/3600 values                | W/m²                |
-| "Solar_irrad_Max"     | max of 720/3600 values                | W/m²                |
-| "Red_Den_cal_Avg"     | mean of 720/3600 values               | µmol/s/m²           |
-| "Red_Den_cal_Std"     | standard deviation of 720/3600 values | µmol/s/m²           |
-| "Red_Den_cal_Min"     | min of 720/3600 values                | µmol/s/m²           |
-| "Red_Den_cal_Max"     | max of 720/3600 values                | µmol/s/m²           |
-| "Far_red_Den_cal_Avg" | mean of 720/3600 values               | µmol/s/m²           |
-| "Far_Red_Den_cal_Std" | standard deviation of 720/3600 values | µmol/s/m²           |
-| "Far_Red_Den_cal_Min" | min of 720/3600 values                | µmol/s/m²           |
-| "Far_Red_Den_cal_Max" | max of 720/3600 values                | µmol/s/m²           |
-| "RFR_rat_Avg"         | mean of 720/3600 values               | mol/mol             |
-| "RFR_rat_Std"         | standard deviation of 720/3600 values | mol/mol             |
-| "RFR_rat_Min"         | minimum of 720/3600 values            | mol/mol             |
-| "RFR_rat_Max"         | maximum of 720/3600 values            | mol/mol             |
-| "Blue_Den_Avg"        | mean of 720/3600 values               | mV                  |
-| "Blue_Den_cal_Std"    | standard deviation of 720/3600 values | µmol/s/m²           |
-| "Blue_Den_cal_Min"    | min of 720/3600 values                | µmol/s/m²           |
-| "Blue_Den_cal_Max"    | max of 720/3600 values                | µmol/s/m²           |
-| "UVA_Den_Avg"         | mean of 720/3600 values               | mV                  |
-| "UVA_Den_cal_Std"     | standard deviation of 720/3600 values | µmol/s/m²           |
-| "UVA_Den_cal_Min"     | min of 720/3600 values                | µmol/s/m²           |
-| "UVA_Den_cal_Max"     | max of 720/3600 values                | µmol/s/m²           |
-| "UVB_Den_Avg"         | mean of 720/3600 values               | mV                  |
-| "UVB_Den_cal_Std"     | standard deviation of 720/3600 values | µmol/s/m²           |
-| "UVB_Den_cal_Min"     | min of 720/3600 values                | µmol/s/m²           |
-| "UVB_Den_cal_Max"     | max of 720/3600 values                | µmol/s/m²           |
-| "WindSpd_S\_WVT"      | mean of 360 values                    | m/s                 |
-| "WindDir_D1_WVT"      | mean of 360 values                    | degrees             |
-| "WindDir_SD1_WVT"     | mean of 360 values                    | degrees             |
-| "AirTemp_Avg"         | mean of 360 values                    | C                   |
-| "AirTemp_Std"         | standard deviation of 360 values      | C                   |
-| "AirTemp_Min"         | min of 360 values                     | C                   |
-| "AirTemp_Max"         | max of 360 values                     | C                   |
-| "RelHumidity_Avg"     | mean of 360 values                    | %                   |
-| "AirDewPoint_Avg"     | mean of 360 values                    | C                   |
-| "AirDewPoint_Std"     | standard deviation of 360 values      | C                   |
-| "AirDewPoint_Min"     | min of 360 values                     | C                   |
-| "AirDewPoint_Max"     | max of 360 values                     | C                   |
-| "AirPressure_Avg"     | mean of 360 values                    | hPa                 |
-| "AirPressure_Min"     | min of 360 values                     | hPa                 |
-| "AirPressure_Max"     | max of 360 values                     | hPa                 |
-| "Ramount"             | sum of 360 values                     | mm                  |
-| "Hamount"             | sum of 360 values                     | hits/cm2            |
-| "SurfTemp_grnd_Avg"   | mean of 720/3600 values               | C                   |
-| "SurfTemp_grnd_Std"   | standard deviation of 720/3600 values | µmol/s/m²           |
-| "SurfTemp_grnd_Min"   | min of 720/3600 values                | µmol/s/m²           |
-| "SurfTemp_grnd_Max"   | max of 720/3600 values                | µmol/s/m²           |
-| "SurfTemp_veg_Avg"    | mean of 720/3600 values               | C                   |
-| "SurfTemp_veg_Std"    | standard deviation of 720/3600 values | µmol/s/m²           |
-| "SurfTemp_veg_Min"    | min of 720/3600 values                | µmol/s/m²           |
-| "SurfTemp_veg_Max"    | max of 720/3600 values                | µmol/s/m²           |
-| "VWC\_[1-3]\_Avg"     | mean of 5 values                      | m3/m-3              |
-| "EC\_[1-3]\_Avg"      | mean of 5 values                      | dS/m                |
-| "T\_[1-3]\_Avg"       | mean of 5 values                      | C                   |
-| "VWC_5cm\_[1-3]"      | mean of 5 values                      | m3/m-3              |
-| "Ka_5cm\_[1-3]"       | mean of 5 values                      | 1..80               |
-| "T_5cm\_[1-3]"        | mean of 5 values                      | C                   |
-| "BulkEC_5cm\_[1-3]"   | mean of 5 values                      | dS/m                |
-| "VWC_10cm\_[1-3]"     | mean of 5 values                      | m3/m-3              |
-| "Ka_10cm\_[1-3]"      | mean of 5 values                      | 1..80               |
-| "T_10cm\_[1-3]"       | mean of 5 values                      | C                   |
-| "BulkEC_10cm\_[1-3]"  | mean of 5 values                      | dS/m                |
-| "VWC_20cm\_[1-3]"     | mean of 5 values                      | m3/m-3              |
-| "Ka_20cm\_[1-3]"      | mean of 5 values                      | 1..80               |
-| "T_20cm\_[1-3]"       | mean of 5 values                      | C                   |
-| "BulkEC_20cm\_[1-3]"  | mean of 5 values                      | dS/m                |
-| "VWC_30cm\_[1-3]"     | mean of 5 values                      | m3/m-3              |
-| "Ka_30cm\_[1-3]"      | mean of 5 values                      | 1..80               |
-| "T_30cm\_[1-3]"       | mean of 5 values                      | C                   |
-| "BulkEC_30cm\_[1-3]"  | mean of 5 values                      | dS/m                |
-| "VWC_40cm\_[1-3]"     | mean of 5 values                      | m3/m-3              |
-| "Ka_40cm\_[1-3]"      | mean of 5 values                      | 1..80               |
-| "T_40cm\_[1-3]"       | mean of 5 values                      | C                   |
-| "BulkEC_40cm\_[1-3]"  | mean of 5 values                      | dS/m                |
-| "VWC_50cm\_[1-3]"     | mean of 5 values                      | m3/m-3              |
-| "Ka_50cm\_[1-3]"      | mean of 5 values                      | 1..80               |
-| "T_50cm\_[1-3]"       | mean of 5 values                      | C                   |
-| "BulkEC_50cm\_[1-3]"  | mean of 5 values                      | dS/m                |
+| Quantity               | Summary                               | Units     |
+|:-----------------------|:--------------------------------------|:----------|
+| "TIMESTAMP"            | sample                                |           |
+| "PAR_Den_Avg"          | mean of 720/3600 values               | µmol/s/m² |
+| "PAR_Den_Std"          | standard deviation of 720/3600 values | µmol/s/m² |
+| "PAR_Den_Min"          | min of 720/3600 values                | µmol/s/m² |
+| "PAR_Den_Max"          | max of 720/3600 values                | µmol/s/m² |
+| "PAR_Den_CS_Avg"       | mean of 720/3600 values               | µmol/s/m² |
+| "PAR_Den_CS_Std"       | standard deviation of 720/3600 values | µmol/s/m² |
+| "PAR_Den_CS_Min"       | min of 720/3600 values                | µmol/s/m² |
+| "PAR_Den_CS_Max"       | max of 720/3600 values                | µmol/s/m² |
+| "PAR_BF_tot_Avg"       | mean of 720/3600 values               | µmol/s/m² |
+| "PAR_BF_tot_Std"       | standard deviation of 720/3600 values | µmol/s/m² |
+| "PAR_BF_tot_Min"       | min of 720/3600 values                | µmol/s/m² |
+| "PAR_BF_tot_Max"       | max of 720/3600 values                | µmol/s/m² |
+| "PAR_BF_diff_Avg"      | mean of 720/3600 values               | µmol/s/m² |
+| "PAR_BF_diff_Std"      | standard deviation of 720/3600 values | µmol/s/m² |
+| "PAR_BF_diff_Min"      | min of 720/3600 values                | µmol/s/m² |
+| "PAR_BF_diff_Max"      | max of 720/3600 values                | µmol/s/m² |
+| "Solar_irrad_Avg"      | mean of 720/3600 values               | W/m²      |
+| "Solar_irrad_Std"      | standard deviation of 720/3600 values | W/m²      |
+| "Solar_irrad_Min"      | min of 720/3600 values                | W/m²      |
+| "Solar_irrad_Max"      | max of 720/3600 values                | W/m²      |
+| "Red_Den_cal_Avg"      | mean of 720/3600 values               | µmol/s/m² |
+| "Red_Den_cal_Std"      | standard deviation of 720/3600 values | µmol/s/m² |
+| "Red_Den_cal_Min"      | min of 720/3600 values                | µmol/s/m² |
+| "Red_Den_cal_Max"      | max of 720/3600 values                | µmol/s/m² |
+| "Far_red_Den_cal_Avg"  | mean of 720/3600 values               | µmol/s/m² |
+| "Far_Red_Den_cal_Std"  | standard deviation of 720/3600 values | µmol/s/m² |
+| "Far_Red_Den_cal_Min"  | min of 720/3600 values                | µmol/s/m² |
+| "Far_Red_Den_cal_Max"  | max of 720/3600 values                | µmol/s/m² |
+| "RFR_rat_Avg"          | mean of 720/3600 values               | mol/mol   |
+| "RFR_rat_Std"          | standard deviation of 720/3600 values | mol/mol   |
+| "RFR_rat_Min"          | minimum of 720/3600 values            | mol/mol   |
+| "RFR_rat_Max"          | maximum of 720/3600 values            | mol/mol   |
+| "Blue_Den_Avg"         | mean of 720/3600 values               | mV        |
+| "Blue_Den_cal_Std"     | standard deviation of 720/3600 values | µmol/s/m² |
+| "Blue_Den_cal_Min"     | min of 720/3600 values                | µmol/s/m² |
+| "Blue_Den_cal_Max"     | max of 720/3600 values                | µmol/s/m² |
+| "UVA_Den_Avg"          | mean of 720/3600 values               | mV        |
+| "UVA_Den_cal_Std"      | standard deviation of 720/3600 values | µmol/s/m² |
+| "UVA_Den_cal_Min"      | min of 720/3600 values                | µmol/s/m² |
+| "UVA_Den_cal_Max"      | max of 720/3600 values                | µmol/s/m² |
+| "UVB_Den_Avg"          | mean of 720/3600 values               | mV        |
+| "UVB_Den_cal_Std"      | standard deviation of 720/3600 values | µmol/s/m² |
+| "UVB_Den_cal_Min"      | min of 720/3600 values                | µmol/s/m² |
+| "UVB_Den_cal_Max"      | max of 720/3600 values                | µmol/s/m² |
+| "WindSpd_S_WVT"        | mean of 360 values                    | m/s       |
+| "WindDir_D1_WVT"       | mean of 360 values                    | degrees   |
+| "WindDir_SD1_WVT"      | mean of 360 values                    | degrees   |
+| "AirTemp_Avg"          | mean of 360 values                    | C         |
+| "AirTemp_Std"          | standard deviation of 360 values      | C         |
+| "AirTemp_Min"          | min of 360 values                     | C         |
+| "AirTemp_Max"          | max of 360 values                     | C         |
+| "RelHumidity_Avg"      | mean of 360 values                    | \%        |
+| "AirDewPoint_Avg"      | mean of 360 values                    | C         |
+| "AirDewPoint_Std"      | standard deviation of 360 values      | C         |
+| "AirDewPoint_Min"      | min of 360 values                     | C         |
+| "AirDewPoint_Max"      | max of 360 values                     | C         |
+| "AirPressure_Avg"      | mean of 360 values                    | hPa       |
+| "AirPressure_Min"      | min of 360 values                     | hPa       |
+| "AirPressure_Max"      | max of 360 values                     | hPa       |
+| "Ramount"              | sum of 360 values                     | mm        |
+| "Hamount"              | sum of 360 values                     | hits/cm2  |
+| "SurfTemp_grnd_Avg"    | mean of 720/3600 values               | C         |
+| "SurfTemp_grnd_Std"    | standard deviation of 720/3600 values | µmol/s/m² |
+| "SurfTemp_grnd_Min"    | min of 720/3600 values                | µmol/s/m² |
+| "SurfTemp_grnd_Max"    | max of 720/3600 values                | µmol/s/m² |
+| "SurfTemp_veg_Avg"     | mean of 720/3600 values               | C         |
+| "SurfTemp_veg_Std"     | standard deviation of 720/3600 values | µmol/s/m² |
+| "SurfTemp_veg_Min"     | min of 720/3600 values                | µmol/s/m² |
+| "SurfTemp_veg_Max"     | max of 720/3600 values                | µmol/s/m² |
+| "VWC\_\[1-3\]\_Avg"    | mean of 5 values                      | m3/m-3    |
+| "EC\_\[1-3\]\_Avg"     | mean of 5 values                      | dS/m      |
+| "T\_\[1-3\]\_Avg"      | mean of 5 values                      | C         |
+| "VWC_5cm\_\[1-3\]"     | mean of 5 values                      | m3/m-3    |
+| "Ka_5cm\_\[1-3\]"      | mean of 5 values                      | 1..80     |
+| "T_5cm\_\[1-3\]"       | mean of 5 values                      | C         |
+| "BulkEC_5cm\_\[1-3\]"  | mean of 5 values                      | dS/m      |
+| "VWC_10cm\_\[1-3\]"    | mean of 5 values                      | m3/m-3    |
+| "Ka_10cm\_\[1-3\]"     | mean of 5 values                      | 1..80     |
+| "T_10cm\_\[1-3\]"      | mean of 5 values                      | C         |
+| "BulkEC_10cm\_\[1-3\]" | mean of 5 values                      | dS/m      |
+| "VWC_20cm\_\[1-3\]"    | mean of 5 values                      | m3/m-3    |
+| "Ka_20cm\_\[1-3\]"     | mean of 5 values                      | 1..80     |
+| "T_20cm\_\[1-3\]"      | mean of 5 values                      | C         |
+| "BulkEC_20cm\_\[1-3\]" | mean of 5 values                      | dS/m      |
+| "VWC_30cm\_\[1-3\]"    | mean of 5 values                      | m3/m-3    |
+| "Ka_30cm\_\[1-3\]"     | mean of 5 values                      | 1..80     |
+| "T_30cm\_\[1-3\]"      | mean of 5 values                      | C         |
+| "BulkEC_30cm\_\[1-3\]" | mean of 5 values                      | dS/m      |
+| "VWC_40cm\_\[1-3\]"    | mean of 5 values                      | m3/m-3    |
+| "Ka_40cm\_\[1-3\]"     | mean of 5 values                      | 1..80     |
+| "T_40cm\_\[1-3\]"      | mean of 5 values                      | C         |
+| "BulkEC_40cm\_\[1-3\]" | mean of 5 values                      | dS/m      |
+| "VWC_50cm\_\[1-3\]"    | mean of 5 values                      | m3/m-3    |
+| "Ka_50cm\_\[1-3\]"     | mean of 5 values                      | 1..80     |
+| "T_50cm\_\[1-3\]"      | mean of 5 values                      | C         |
+| "BulkEC_50cm\_\[1-3\]" | mean of 5 values                      | dS/m      |
 
-Table: Data logged once per hour available before computation of derived quantities. Column 'summary' shows how the data are summarised by the datalogger before being stored. When the number of values is indicated as 720/3600, 720 is for data acquired before 2024-04-15 and 3600 for more recent data. The units are those obtained after off-line application of calibration factors. As for data logged at 1 min intervals, the TIMESTAMP is converted to UTC time. Sun angles are not computed. {#tbl-logged-hour}
+: Data logged once per hour available before computation of derived
+quantities. Column 'summary' shows how the data are summarised by the
+datalogger before being stored. When the number of values is indicated
+as 720/3600, 720 is for data acquired before 2024-04-15 and 3600 for
+more recent data. The units are those obtained after off-line
+application of calibration factors. As for data logged at 1 min
+intervals, the TIMESTAMP is converted to UTC time. Sun angles are not
+computed. {#tbl-logged-hour}
 
 ## Quantities logged once per day (until 2024-4-15)
 
 ::: callout-note
-As individual observations are being logged since 2024-04-15, the histograms
-earlier computed by the logger can now be computed off-line, reducing the data
-processing load in the logger, to facilitate faster data acquisition and 
-logging.
+As individual observations are being logged since 2024-04-15, the
+histograms earlier computed by the logger can now be computed off-line,
+reducing the data processing load in the logger, to facilitate faster
+data acquisition and logging.
 :::
 
-| Quantity                   | Summary                          | Units               |
-|:---------------------------|:---------------------------------|:--------------------|
-| "TIMESTAMP"                | sample                           | yyyy-mm-dd          |
-| "PAR_Den_Hst(1-25)"        | histogram with 25 bins           | µmol/s/m²           |
-| "PAR_Den_CS_Hst(1-25)"     | histogram with 25 bins           | µmol/s/m²           |
-| "Solar_irrad_Hst(1-25)"    | histogram with 25 bins           | µmol/s/m²           |
-| "PAR_DenLog_Hst(1-12)"     | histogram with 12 bins           | log(µmol/s/m²)      |
-| "PAR_DenLog_CS_Hst(1-12)"  | histogram with 12 bins           | log(µmol/s/m²)      |
-| "Solar_irradLog_Hst(1-10)" | histogram with 10 bins           | log(µmol/s/m²)      |
-| "RFR_rat_Hst(1-10)"        | histogram with 10 bins           | mol/mol             |
+| Quantity                   | Summary                | Units          |
+|:---------------------------|:-----------------------|:---------------|
+| "TIMESTAMP"                | sample                 | yyyy-mm-dd     |
+| "PAR_Den_Hst(1-25)"        | histogram with 25 bins | µmol/s/m²      |
+| "PAR_Den_CS_Hst(1-25)"     | histogram with 25 bins | µmol/s/m²      |
+| "Solar_irrad_Hst(1-25)"    | histogram with 25 bins | µmol/s/m²      |
+| "PAR_DenLog_Hst(1-12)"     | histogram with 12 bins | log(µmol/s/m²) |
+| "PAR_DenLog_CS_Hst(1-12)"  | histogram with 12 bins | log(µmol/s/m²) |
+| "Solar_irradLog_Hst(1-10)" | histogram with 10 bins | log(µmol/s/m²) |
+| "RFR_rat_Hst(1-10)"        | histogram with 10 bins | mol/mol        |
 
-Table: Data logged once per day available before computation of derived quantities. Column 'summary' shows how the data are summarized by the datalogger before being stored. As for data logged at 1 h intervals, the TIMESTAMP is converted to UTC time. Sun angles are not computed. These data have not been published. {#tbl-import-hour}
+: Data logged once per day available before computation of derived
+quantities. Column 'summary' shows how the data are summarized by the
+datalogger before being stored. As for data logged at 1 h intervals, the
+TIMESTAMP is converted to UTC time. Sun angles are not computed. These
+data have not been published. {#tbl-import-hour}
 
 # Data processing in R
 
-The logged data are imported into R from files created by Campbell Scientific's
-PC400 program. The files are read using function read_csi_dat()` from package 
-'photobiologyInOut'. The data now in data frames are checked for duplicate rows,
-outlier values, and time shifts. Problems are corrected when possible or data 
-replaced by NAs when recovery is not possible.
+The logged data are imported into R from files created by Campbell
+Scientific's PC400 program. The files are read using function
+read_csi_dat()\` from package 'photobiologyInOut'. The data now in data
+frames are checked for duplicate rows, outlier values, and time shifts.
+Problems are corrected when possible or data replaced by NAs when
+recovery is not possible.
 
-In a separate step, R scripts are used to merge
-data in the different files created during import into R. Vakidated calibrations
-and corrections are applied obtaining a single data object with all data logged
-at a given frequency.
+In a separate step, R scripts are used to merge data in the different
+files created during import into R. Vakidated calibrations and
+corrections are applied obtaining a single data object with all data
+logged at a given frequency.
 
-Derived quantities are calculated and added to the data set, including solar
-time, sun elevation and sun azimuth [@tbl-import-secon]. The position of the sun
-and solar time are computed using Meuss (1998) very accurate equations as
-implemented in R package 'photobiology'. The coordinates of the weather station
-are for the locations of the mast, with radiation sensors within 1.5 m of it,
-and soil sensors within 10 m. The accuracy is that allowed by the image layer of
-Google Maps with high resolution imagery.
+Derived quantities are calculated and added to the data set, including
+solar time, sun elevation and sun azimuth [@tbl-r-script]. The
+position of the sun and solar time are computed using Meuss (1998) very
+accurate equations as implemented in R package 'photobiology'. The
+coordinates of the weather station are for the locations of the mast,
+with radiation sensors within 1.5 m of it, and soil sensors within 10 m.
+The accuracy is that allowed by the image layer of Google Maps with high
+resolution imagery.
 
-| Quantity         | Summary | Units                   |
-|:-----------------|:--------|:------------------------|
-| "time"           | sample  | yyyy-mm-dd hh:mm:ss UTC |
-| "day_of_year"    | sample  | numeric                 |
-| "month_of_year"  | sample  | 1..12                   |
-| "month_name"     | sample  | character               |
-| "calendar_year"  | sample  | numeric                 |
-| "time_of_day"    | sample  | numeric                 |
-| "solar_time"     | sample  | numeric                 |
-| "sun_elevation"  | sample  | degrees                 |
-| "sun_azimuth"    | sample  | degrees                 |
-| "PAR_BF_diff_fr" | sample  | /1                      |
-| "was_sunny"      | sample  | logical                 |
-|:-----------------|:--------|:------------------------|
-| "time"           | sample  | yyyy-mm-dd hh:mm:ss UTC |
+| Quantity           | Summary   | Units                     |
+|:-------------------|:----------|:--------------------------|
+| "time"             | sample    | yyyy-mm-dd hh:mm:ss UTC   |
+| "day_of_year"      | sample    | numeric                   |
+| "month_of_year"    | sample    | 1..12                     |
+| "month_name"       | sample    | character                 |
+| "calendar_year"    | sample    | numeric                   |
+| "time_of_day"      | sample    | numeric                   |
+| "solar_time"       | sample    | numeric                   |
+| "sun_elevation"    | sample    | degrees                   |
+| "sun_azimuth"      | sample    | degrees                   |
+| "PAR_BF_diff_fr"   | sample    | /1                        |
+| "PAR_diff_fr_rel"  | sample    | /1                        |
+| "was_sunny"        | sample    | logical                   |
 
-Table: Some quantities are computed and added to the data set. Based on the "TIMESTAMP" stored by the datalogger (and its difference from UTC time) and the geographic coordinates of the station, the sun position and solar time are computed and added to the data. "TIMESTAMP" is deleted and replaced by "time" and the quantities in this table.
+: Some quantities are computed and added to the data set. Based on the
+"TIMESTAMP" stored by the datalogger (and its difference from UTC time)
+and the geographic coordinates of the station, the sun position and
+solar time are computed and added to the data. "TIMESTAMP" is deleted
+and replaced by "time" and the quantities in this table. {#tbl-r-script}
 
-Depending on the date of data acquisition, some calibrations are applied at this stage. {#tbl-import-second}
+Depending on the date of data acquisition, most calibrations are applied
+at this stage.
 
-Variable `was_sunny` indicates occlusion or not of the solar disk, estimated
-based on the deviation from the expected fraction of diffuse PAR at the current
-sun elevation. The reference value is derived from spectral irradiance
-simulations done with the TUV radiation transfer and atmosphere photochemistry
-model TUV. The variable is set to `NA` when the sun is below the horizon or
-diffuse PAR irradiance is less than 5 $\mathrm{\mu mol\,m^{-2}\,s^{-1}}$.
+Variable `was_sunny` indicates occlusion or not of the solar disk,
+estimated based on the deviation from the expected fraction of diffuse
+PAR at the current sun elevation. The reference value is derived from
+spectral irradiance simulations done with the TUV radiation transfer and
+atmosphere photochemistry model TUV. The variable is set to `NA` when
+the sun is below the horizon or diffuse PAR irradiance is less than 5
+$\mathrm{\mu mol\,m^{-2}\,s^{-1}}$.
 
-The irradiances of UV-A1 and UV-A2 are derived from the measured UV-A, UV-B and
-blue irradiances, based on calibrations on-site against a spectrometer. The UV-A
-irradiance measurements are also corrected for the temperature coefficient of
-the sensor as published 
-[Langer 2020](https://download.sglux.de/publications/sglux_SiC_Temperature_Coefficient.pdf), 
+The irradiances of UV-A1 and UV-A2 are derived from the measured UV-A,
+UV-B and blue irradiances, based on calibrations on-site against a
+spectrometer. The UV-A irradiance measurements are also corrected for
+the temperature coefficient of the sensor as published [Langer
+2020](https://download.sglux.de/publications/sglux_SiC_Temperature_Coefficient.pdf),
 taking into account spectral dependence of the temperature and radiation
 responses and the shape of the solar spectrum.
 
 ::: callout-warning
-As the data have been logged for different lengths of time for the different
-variables, when merging the data into a single set containing columns for all
-variables measured since the start of the time series, some variables are
-filled-in with a marker of "not available" (`NA`) for different time periods.
+As the data have been logged for different lengths of time for the
+different variables, when merging the data into a single set containing
+columns for all variables measured since the start of the time series,
+some variables are filled-in with a marker of "not available" (`NA`) for
+different time periods.
 :::
 
-Some of the mean values in the hourly data are computed off-line from data
-logged at 1 min interval, while other values are computed in the logger.
+Some of the mean values in the hourly data are computed off-line from
+data logged at 1 min interval, while other values are computed in the
+logger.
 
 # Information about the published data
 
-In the examples below, we use R to read the data from
-`.rda` files, but the same data are also available as comma separated values
-(CSV) in Gnu Zip (gzip) compressed files.
+In the examples below, we use R to read the data from `.rda` files, but
+the same data are also available as comma separated values (CSV) in Gnu
+Zip (gzip) compressed files.
 
 ```{r}
 load("F:/aphalo/research-data/data-weather/RFR-Viikki-field/data-rda/second_2024_latest.tb.rda")
 cat(comment(second_2024_latest.tb))
 ```
 
-**The data set at 1 second interval** has `r nrow(second_2024_latest.tb)` rows and `r ncol(second_2024_latest.tb)` variables. 
+**The data set at 1 second interval** has
+`r nrow(second_2024_latest.tb)` rows and `r ncol(second_2024_latest.tb)`
+variables.
 
-The variables are `r paste(colnames(second_2024_latest.tb), collapse = ", ")`.
+The variables are
+`r paste(colnames(second_2024_latest.tb), collapse = ", ")`.
 
 ```{r}
 load("F:/aphalo/research-data/data-weather/RFR-Viikki-field/data-rda/minute_2015_latest.tb.rda")
 cat(comment(minute_2015_latest.tb))
 ```
 
-**The data set at 1 min interval** has `r nrow(minute_2015_latest.tb)` rows and `r ncol(minute_2015_latest.tb)` variables. 
+**The data set at 1 min interval** has `r nrow(minute_2015_latest.tb)`
+rows and `r ncol(minute_2015_latest.tb)` variables.
 
-The variables are `r paste(colnames(minute_2015_latest.tb), collapse = ", ")`.
+The variables are
+`r paste(colnames(minute_2015_latest.tb), collapse = ", ")`.
 
 ```{r}
 load("F:/aphalo/research-data/data-weather/RFR-Viikki-field/data-rda/hour_soil_calc_2015_latest.tb.rda")
 cat(comment(hour_soil_calc_2015_latest.tb))
 ```
 
-**The data set at 1 h interval** has `r nrow(hour_soil_calc_2015_latest.tb)` rows and `r ncol(hour_soil_calc_2015_latest.tb)` variables. The variables are `r paste(colnames(hour_soil_calc_2015_latest.tb), collapse = ", ")`.
+**The data set at 1 h interval** has
+`r nrow(hour_soil_calc_2015_latest.tb)` rows and
+`r ncol(hour_soil_calc_2015_latest.tb)` variables. The variables are
+`r paste(colnames(hour_soil_calc_2015_latest.tb), collapse = ", ")`.
 
 ::: callout-note
-A detailed data dictionary will be added soon to the data objects themselves. Data are in SI units and in most cases without scale factors. The units described for the logged data in the tables above are not modified except for sensors for which mV signals are logged.
+A detailed data dictionary will be added soon to the data objects
+themselves. Data are in SI units and in most cases without scale
+factors. The units described for the logged data in the tables above are
+not modified except for sensors for which mV signals are logged.
 :::
 
 # Example plots
 
-Using data saved at 1 min interval we can compute empirical desity distributions, showing how frequently different values have been observed.
+Using data saved at 1 min interval we can compute empirical desity
+distributions, showing how frequently different values have been
+observed.
 
 ## PAR photon irradiance
 
-Photosynthetically active radiation photon irradiance at Viikki, Helsinki, presented as fitted empirical density functions for each month of the year [@fig-PAR-month]. During winter-time some snow from time to time accumulated on the sensor may have distorted the distribution to some extent. (Each curve in the plot can be thought as equivalent to a smoothed-out histogram, scaled to an area of one.)
+Photosynthetically active radiation photon irradiance at Viikki,
+Helsinki, presented as fitted empirical density functions for each month
+of the year [@fig-PAR-month]. During winter-time some snow from time to
+time accumulated on the sensor may have distorted the distribution to
+some extent. (Each curve in the plot can be thought as equivalent to a
+smoothed-out histogram, scaled to an area of one.)
 
 ```{r}
-##| label: fig-PAR-month
-##| fig-cap: Empirical density of photosynthetically active radiation (PAR) irradiances by month of the year. The density curves have been fitted to 1 min averages computed from data acquired once every 5 s.
+#| label: fig-PAR-month
+#| fig-cap: Empirical density of photosynthetically active radiation (PAR) irradiances by month of the year. The density curves have been fitted to 1 min averages computed from data acquired once every 5 s.
 minute_2015_latest.tb %>%
   filter(sun_elevation > 0 & PAR_umol > 0) %>%
   select(month_name, PAR_umol, calendar_year) %>%
@@ -513,11 +592,15 @@ hour_soil.tb %>%
   mutate(depth = as.numeric(gsub("T_|cm", "", layer))) -> soil_temperature.tb
 ```
 
-In @fig-soil-temp-profile the soil temperature depth profile is shown. It is summarised using quantile regression for the 5%, 50% and 95% percentiles. This highlights the range of variation at different depths on different months of the year. The data values, not plotted, are medians from three sensors, logged once every 1 h..
+In @fig-soil-temp-depth the soil temperature depth profile is shown. It
+is summarised using quantile regression for the 5%, 50% and 95%
+percentiles. This highlights the range of variation at different depths
+on different months of the year. The data values, not plotted, are
+medians from three sensors, logged once every 1 h..
 
 ```{r, warning=FALSE, message=FALSE}
-##| label: fig-soil-temp-profile
-##| fig-cap: Soil-temperature depth profile for each month of the year.
+#| label: fig-soil-temp-depth
+#| fig-cap: Soil-temperature depth profile for each month of the year.
 soil_temperature.tb %>%
   ggplot(aes(depth, soil_t)) +
   stat_quant_band(formula = y ~ poly(x, 5, raw = TRUE), quantiles = c(0.05, 0.5, 0.95)) +
@@ -529,11 +612,15 @@ soil_temperature.tb %>%
 soil_t.fig
 ```
 
-In @fig-soil-temp-time-course we show hourly temperatures at different depths over a few days, showing the daily warming and cooling of the mostly bare soil. The data values shown are medians from three sensors, acquired once every 1 h.
+In @fig-soil-temp-time-course we show hourly temperatures at different
+depths over a few days, showing the daily warming and cooling of the
+mostly bare soil. The data values shown are medians from three sensors,
+acquired once every 1 h.
 
 ```{r, warning=FALSE, message=FALSE}
-##| label: fig-soil-temp-time-course
-##| fig-cap: Soil-temperature time course at nine different depths during nine consecutive days in the Summer of year 2020. Data logged once per every 1 h.
+#| label: fig-soil-temp-time-course
+#| fig-cap: Soil-temperature time course at nine different depths during nine consecutive days in the Summer of year 2020. Data logged once per every 1 h.
+
 soil_temperature.tb %>%
   filter(day_of_year > 190 & day_of_year < 200 & calendar_year == 2020) %>%
   ggplot(aes(time, soil_t, colour = factor(depth))) +
@@ -542,4 +629,3 @@ soil_temperature.tb %>%
        colour = "Depth (cm)")  -> soil_t_daily.fig
 soil_t_daily.fig
 ```
-

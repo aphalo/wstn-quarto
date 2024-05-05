@@ -20,7 +20,7 @@ website:
   page-footer:
     right:
       - text: "&copy; 2015-2024 Pedro J. Aphalo"
-        href: about/about.qmd
+        href: about.qmd
     center:
       - text: "Viikki Campus Weather Station"
     left:
