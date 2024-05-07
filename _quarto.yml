@@ -15,8 +15,12 @@ website:
             text: Computations
       - text: Data access
         href: https://osf.io/e4vau/
-      - href: about.qmd
-        text: About
+      - text: About
+        menu:
+          - href: data-users.qmd
+            text: Publications and Users
+          - href: about.qmd
+            text: About
   page-footer:
     right:
       - text: "&copy; 2015-2024 Pedro J. Aphalo"

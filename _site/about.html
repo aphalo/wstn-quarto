@@ -111,10 +111,21 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="https://osf.io/e4vau/"> 
 <span class="menu-text">Data access</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
-<span class="menu-text">About</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">About</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-about">    
+        <li>
+    <a class="dropdown-item" href="./data-users.html">
+ <span class="dropdown-text">Publications and Users</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./about.html">
+ <span class="dropdown-text">About</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -587,7 +598,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./about.html">
+    <a class="nav-link active" href="./about.html" aria-current="page">
 <p>© 2015-2024 Pedro J. Aphalo</p>
 </a>
   </li>  
