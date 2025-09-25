@@ -67,6 +67,7 @@ data, as:
 Aphalo, Pedro J. 2024. _High Frequency Weather Data for Viikki,
 Helsinki, Finland._ OSF. doi:10.17605/OSF.IO/E4VAU.
 
+::: callout-caution
 # Limitations of the data
 
 Radiation data in winter months is very unreliable as the sensors lack a
@@ -79,6 +80,7 @@ initially to *take readings during the growing season*. The data in the
 files include winter values for all variables, including those which are
 expected not reliable on many days between mid November and late March,
 and a few days in April.
+:::
 
 # The data flow
 
@@ -86,7 +88,7 @@ The acquisition and summarizing of data requires multiples steps, some
 performed on board the datalogger and some in a personal computer
 [@fig-data-flow-chart]. The program in the logger is written in CRBasic,
 data are downloaded through a USB connection to a laptop computer in the
-field, using the program [PC400](https://www.campbellsci.com/pc400).
+field, or from the microSD card, using the program [PC400](https://www.campbellsci.com/pc400).
 Later computations are done with R scripts that make use of packages
 from the [R for Photobiology
 Suite](https://www.r4photobiology.info/pages/r4p-introduction.html)
@@ -95,7 +97,7 @@ Suite](https://www.r4photobiology.info/pages/r4p-introduction.html)
 Even if the program code used at some of these steps has been edited
 over the years, the steps have remained the same. The raw data files as
 downloaded from the logger are all stored indefinitely. This has made it
-possible to redo all data processing starting from step "import" when
+possible to redo all data processing following step "import" when
 the R scripts have been edited to add new derived quantities, update
 calibrations, or fix errors. This is needed to ensure consistency
 through the whole time series of data.
@@ -133,22 +135,20 @@ the continuity of the published time series data, as the two approaches
 are numerically equivalent.
 
 The change in data acquisition frequency from once every 5 s to once
-every 1 s on 2024-04-15, could in principle decrease the variability of
-the 1 min summaries. However, the averaging period used for data
+every 1 s on 2024-04-15 and later to 50 ms, could in principle decrease the variability of the 1 min summaries. However, the averaging period used for data
 acquisition was decreased at the same time as the frequency was
-increased. Means in the 1 min and 1 h time series are, thus, unlikely to
+increased, to make it possible. Means in the 1 min and 1 h time series are, thus, unlikely to
 be affected significantly. Minima and maxima, and standard deviations
 could, potentially be slightly affected.
 
 Similarly, until 2023-xx-xx, the data from soil sensors was acquired
 once per 1 h and these values were directly logged. Since 2023-XX-XX,
-they are acquired once every 12 min, and 1 h means of 5 values logged.
+they are acquired first once every 15 min, and later once every 12 min, and 1 h means of 5 or 6 values logged. I expect this change to have reduced variability caused by measurement errors.
+
 The values returned by the Vaisala WXT520 weather transmitter were
 acquired once every 5 s, but the polling frequency had to be decreased
 to once every 10 s for the WXT536. However, as the averaging period in
-the WXT536 for means computed on board the sensor was also increased, 1
-min and 1 h averages should not be affected by this change. Minima and
-maxima, and standard deviations could, potentially be slightly affected.
+the WXT536 for means computed on board the sensor was also increased to 10 s, 1 min and 1 h averages should not be affected by this change. Minima and maxima, and standard deviations could, potentially be slightly affected.
 :::
 
 # Logged acquired and summary values

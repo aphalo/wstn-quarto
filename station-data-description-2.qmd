@@ -3,7 +3,7 @@ title: "Data acquired and computed - Version 2"
 subtitle: "Quantities published and their origin"
 author: "Pedro J. Aphalo (SenPEP)"
 date: 2024-06-11
-date-modified: 2024-06-11
+date-modified: 2025-05-19
 date-meta: "`r Sys.Date()`"
 abstract: |
   This page describes the data available from the weather station at the Viikki campus of the University of Helsinki, at Helsinki, Finland, since May 2024. 
@@ -31,12 +31,19 @@ library(ggpmisc)
 library(lubridate)
 ```
 
-# What makes data from this weather station different?
+::: callout-note
+# Data logged and data sets
 
--   Time interval for acquisition of light measurements (From 2024-05-14):
-    50 ms.
+How data summaries for this weather station are computed has changed over the years. Initially most summaries were computed at the data logger, but later when the data acquisition frequency and number of sensors were increased, computations have been done off-line when possible. Data are logged only at the fastest rate, and summaries for longer time steps are computed off-line after the data are downloaded. However, the data published should not be significantly affected by these changes.
 
--   Time interval for logging of summaries (From 2024-05-14): 50 ms, 500 ms, 1 min, 1 h.
+In some cases additional computed variables have been added When new releases of the data set have been published, mostly background information such sun solar position. In all cases the added variables have been added retrospectively with computed values whenever possible, ensuring that for each data release, all off-line computations are redone consistently. In the case of data not available, such as from sensors installed after the time series started or when individual sensors have malfunctioned, these values have been set to NA (not available). In those cases when looging has been interrupted, such as battery or logger failure, missing rows appear in the data set.
+:::
+
+# What makes data being acquired since 2024 different?
+
+-   Time interval for acquisition of light measurements (From 2024-05-14): 50 ms.
+
+-   Time interval for logging of summaries (From 2024-05-14): 50 ms, 1.0 s, 1 min, 1 h.
 
 -   Solar radiation measurement: seven types of broadband
     sensors, to increase to eight.

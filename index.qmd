@@ -1,7 +1,7 @@
 ---
 title: "Home"
 subtitle: "Viikki, Helsinki, Finland"
-author: "Pedro J. Aphalo (SenPEP, OEB @ University of Helsinki)"
+author: "Pedro J. Aphalo (SenPEP)"
 date: "`r Sys.Date()`"
 abstract: |
   This site describes the weather station at the Viikki campus of the University of Helsinki, at Helsinki, Finland.
@@ -20,13 +20,17 @@ draft: false
 
 ## Presentation and history
 
-The station is relatively new. It was set up in 2015 to provide background environmental data for field experiments done in the research field at the Viikki campus of the University of Helsinki, Finland. 
+The station is relatively new. It was set up in 2015 to provide background environmental data for field experiments done in the research field at the Viikki campus of the University of Helsinki, Finland. As several studies at the campus are related to plant responses to sunlight, measurements of sunlight have had a broad scope.
 
-Because of budget restrictions and needs of different experiments, sensors have been added over the years to expand the range of measured variables. Initially the aim was to collect measurements only during the growing season or snow-free period. Currently part of the sensors work reliably year-round, but the solar radiation sensors still lack air blowers to clear the snow.
+Because of budget restrictions and the needs of different experiments, sensors have been added over the years to expand the range of measured variables, as well as some removed to make different measurements possible. Initially the aim was to collect measurements only during the growing season or snow-free period. Currently part of the sensors work reliably year-round, but the solar radiation sensors still lack air blowers to clear the snow.
 
 The measured variables are the basic weather ones plus variables of specific interest in agro-meteorology and plant ecology, with particular emphasis on solar radiation and its spectral and temporal variation. For most variables data are acquired and logged at much higher frequencies than at standard meteorological stations or agro-meteorological stations. The array of radiation sensors is also much more comprehensive and covers most wavebands of interest for plant ecology and plant photobiology.
 
 At the core of the station is a high speed datalogger with analogue to digital converters (ADC) with 24 bit of precision and an input expansion module. These together with the use in part of sensors with built-in ADC attached using multiplexed serial digital communication (SDI-12 protocol) allows the acquisition of data for numerous variables in synchrony.
+
+In 2024 and 2025 broad band light sensors for UV-A1 and Green light, custom developed in collaboration by sglux in Germany. Another set of UV-B, UV-A2, UV-A1, Green and Blue light sensor with a response time constant < 5 ms were made to order by sglux. Together with these sensors we added a read plus far-red sensor from Apogee with response time constant < 1 ms. We increased for these sensors the measuring and logging frequency 20 times per second (one reading every 50 ms).
+
+In the spring of 2025 the soil water content and temperature measurements were discontinued. Higher replication in addition to frequent reinstallation would be necessary, but we lack the resources.
 
 ![View of the weather station.](images/tower-2020-11.jpg){#fig-photo-weather-station}
 
@@ -34,12 +38,10 @@ At the core of the station is a high speed datalogger with analogue to digital c
 
 The weather station is located in Viikki, Helsinki, Finland. It is in the research field at the Viikki campus of the [University of Helsinki](https://www.helsinki.fi/fi/tutustu-meihin/tama-helsingin-yliopisto/kampukset/viikin-kampus) at coordinates 60.2268 N, 25.0192 E. 
 
-
 ## Future plans
 
-At the very least we hope to maintain the station measuring the same variables as currently in the future. Regrettably, the station needs to be relocated by some hundred meters in the near future, thus creating a discontinuity in the time series of data.
+At the very least we hope to maintain the station measuring the same variables as currently in the future, although not necessarily at the same frequency as in 2024 and 2025. Regrettably, the station needs to be relocated by some hundred meters in the near future, thus creating a discontinuity in the time series of data. Recent development plans for the area, when made effective, will result in the research field being converted to other uses.
 
-Plans are in place to add broad band light sensors for additional wavelengths, UV-A1 and Green light sensors are being custom developed in collaboration by sglux in Germany. We intend to increase the measuring and logging frequency for light measurements.
+We have interest in doing measurements with custom broadband sensors with input optics with special geometries. The idea is that these sensors could measure the radiation received on a vertical cylinder and on a dome surface, thus complementing the usual flat horizontal surface of cosine-corrected sensors used to measure irradiance on a horizontal plane. Many plant surfaces as well as parts of the human body are exposed as vertical surfaces or at other angles awafrom the horizontal, so knowing the UV and visible radiation they receive is important.
 
-In the longer term, we intend acquire custom broadband sensors with input optics with special geometries. The idea is that these sensors will measure the radiation received on a vertical cylinder and on a dome surface, thus complementing the usual cosine-corrected ones used to measure irradiance on a horizontal plane. Many plant surfaces as well as parts of the human body are exposed as vertical surfaces or other other angles from the horizontal, so knowing the UV and visible radiation they receive is important.
-
+Another possible addition is the measurement of spectral irradiance. Some new spectrometers for continuous use outdoors are being developed by Apogee and by Aranet. Spectrometers are relative expensive.
